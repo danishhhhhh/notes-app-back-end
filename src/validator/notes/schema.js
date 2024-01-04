@@ -1,12 +1,9 @@
-const { NotePayloadSchema } = require('./schema');
+const Joi = require('joi');
 
-const NotesValidator = {
-  validateNotePayload: (payload) => {
-    const validationResult = NotePayloadSchema.validate(payload);
-    if (validationResult.error) {
-      throw new Error(validationResult.error.message);
-    }
-  },
-};
+const NotePayloadSchema = Joi.object({
+  title: Joi.string().required(),
+  body: Joi.string().required(),
+  tags: Joi.array().items(Joi.string()).required(),
+});
 
-module.exports = NotesValidator;
+module.exports = { NotePayloadSchema };
