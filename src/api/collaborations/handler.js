@@ -18,7 +18,6 @@ class CollaborationsHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Kolaborasi berhasil ditambahkan',
       data: {
         collaborationId,
       },
